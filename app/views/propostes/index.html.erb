@@ -1,0 +1,38 @@
+<div class="light-background-container">
+  
+  <div class="row">
+    <div class="medium-12 columns">
+      <div class="titol-seccio">
+        <%= t('.titol_propostes') %>
+      </div>
+    </div>
+  </div>
+
+<div class="reveal" id="modal-proposta" data-reveal>
+  <h3 id="modalTitle"><%= t('.proposta') %></h3>
+  <div id="formulari-proposta" class="formulari-proposta">
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <div class="light-container deficiencies-container">
+        <div class="deficiencies-title">
+          <h3 class="titol-deficiencies"><%= t('.titol_llistat_propostes') %></h3>
+        </div>
+        <div id="propostes">
+          <%= render  :partial => '/propostes/llistat_propostes' %>
+        </div>
+        <div class="spacer"></div>
+        <%= link_to (new_proposta_path(edifici_id: params[:edifici_id])), remote: true do %>
+          <span class="suma">+</span> <%= t('.afegir_proposta') %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

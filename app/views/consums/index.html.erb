@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Consums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Edifici</th>
+      <th>Energia primaria</th>
+      <th>Emissions</th>
+      <th>Qualificacio energia primaria</th>
+      <th>Qualificacio emissions</th>
+      <th>Potencia contractada</th>
+      <th>Electricitat consum anual</th>
+      <th>Electricitat emissions</th>
+      <th>Electricitat preu</th>
+      <th>Electricitat estimacio consum millores</th>
+      <th>Gas consum anual</th>
+      <th>Gas emissions</th>
+      <th>Gas preu</th>
+      <th>Gas estimacio consum millores</th>
+      <th>Gasoil consum anual</th>
+      <th>Gasoil emissions</th>
+      <th>Gasoil preu</th>
+      <th>Gasoil estimacio consum millores</th>
+      <th>Calefaccio font energia</th>
+      <th>Calefaccio percentatge consum</th>
+      <th>Calefaccio2 font energia</th>
+      <th>Calefaccio2 percentatge consum</th>
+      <th>Acs font energia</th>
+      <th>Acs percentatge consum</th>
+      <th>Refrigeracio percentatge consum</th>
+      <th>Iluminacio percentatge consum</th>
+      <th>Electrodomestics percentatge consum</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consums.each do |consum| %>
+      <tr>
+        <td><%= consum.edifici_id %></td>
+        <td><%= consum.energia_primaria %></td>
+        <td><%= consum.emissions %></td>
+        <td><%= consum.qualificacio_energia_primaria %></td>
+        <td><%= consum.qualificacio_emissions %></td>
+        <td><%= consum.potencia_contractada %></td>
+        <td><%= consum.electricitat_consum_anual %></td>
+        <td><%= consum.electricitat_emissions %></td>
+        <td><%= consum.electricitat_preu %></td>
+        <td><%= consum.electricitat_estimacio_consum_millores %></td>
+        <td><%= consum.gas_consum_anual %></td>
+        <td><%= consum.gas_emissions %></td>
+        <td><%= consum.gas_preu %></td>
+        <td><%= consum.gas_estimacio_consum_millores %></td>
+        <td><%= consum.gasoil_consum_anual %></td>
+        <td><%= consum.gasoil_emissions %></td>
+        <td><%= consum.gasoil_preu %></td>
+        <td><%= consum.gasoil_estimacio_consum_millores %></td>
+        <td><%= consum.calefaccio_font_energia %></td>
+        <td><%= consum.calefaccio_percentatge_consum %></td>
+        <td><%= consum.calefaccio2_font_energia %></td>
+        <td><%= consum.calefaccio2_percentatge_consum %></td>
+        <td><%= consum.acs_font_energia %></td>
+        <td><%= consum.acs_percentatge_consum %></td>
+        <td><%= consum.refrigeracio_percentatge_consum %></td>
+        <td><%= consum.iluminacio_percentatge_consum %></td>
+        <td><%= consum.electrodomestics_percentatge_consum %></td>
+        <td><%= link_to 'Show', consum %></td>
+        <td><%= link_to 'Edit', edit_consum_path(consum) %></td>
+        <td><%= link_to 'Destroy', consum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consum', new_consum_path %>

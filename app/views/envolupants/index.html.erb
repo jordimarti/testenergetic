@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Envolupants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Edifici</th>
+      <th>Millores facana</th>
+      <th>Millores coberta</th>
+      <th>Tipus finestres</th>
+      <th>Estanquitat finestres</th>
+      <th>Descripcio facanes</th>
+      <th>Descripcio coberta</th>
+      <th>Descripcio terra</th>
+      <th>Descripcio finestres</th>
+      <th>Puntuacio facanes</th>
+      <th>Puntuacio coberta</th>
+      <th>Puntuacio terra</th>
+      <th>Puntuacio finestres</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @envolupants.each do |envolupant| %>
+      <tr>
+        <td><%= envolupant.edifici_id %></td>
+        <td><%= envolupant.millores_facana %></td>
+        <td><%= envolupant.millores_coberta %></td>
+        <td><%= envolupant.tipus_finestres %></td>
+        <td><%= envolupant.estanquitat_finestres %></td>
+        <td><%= envolupant.descripcio_facanes %></td>
+        <td><%= envolupant.descripcio_coberta %></td>
+        <td><%= envolupant.descripcio_terra %></td>
+        <td><%= envolupant.descripcio_finestres %></td>
+        <td><%= envolupant.puntuacio_facanes %></td>
+        <td><%= envolupant.puntuacio_coberta %></td>
+        <td><%= envolupant.puntuacio_terra %></td>
+        <td><%= envolupant.puntuacio_finestres %></td>
+        <td><%= link_to 'Show', envolupant %></td>
+        <td><%= link_to 'Edit', edit_envolupant_path(envolupant) %></td>
+        <td><%= link_to 'Destroy', envolupant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Envolupant', new_envolupant_path %>

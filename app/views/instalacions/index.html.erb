@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Instalacions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Edifici</th>
+      <th>Sistema acs calefaccio</th>
+      <th>Antiguitat acs</th>
+      <th>Antiguitat calefaccio</th>
+      <th>Sistema refrigeracio</th>
+      <th>Antiguitat refrigeracio</th>
+      <th>Sistema iluminacio</th>
+      <th>Potencia iluminacio</th>
+      <th>Descripcio acs</th>
+      <th>Descripcio calefaccio</th>
+      <th>Descripcio refrigeracio</th>
+      <th>Descripcio iluminacio</th>
+      <th>Descripcio electrodomestics</th>
+      <th>Puntuacio acs</th>
+      <th>Puntuacio calefaccio</th>
+      <th>Puntuacio refrigeracio</th>
+      <th>Puntuacio iluminacio</th>
+      <th>Puntuacio electrodomestics</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instalacions.each do |instalacio| %>
+      <tr>
+        <td><%= instalacio.edifici_id %></td>
+        <td><%= instalacio.sistema_acs_calefaccio %></td>
+        <td><%= instalacio.antiguitat_acs %></td>
+        <td><%= instalacio.antiguitat_calefaccio %></td>
+        <td><%= instalacio.sistema_refrigeracio %></td>
+        <td><%= instalacio.antiguitat_refrigeracio %></td>
+        <td><%= instalacio.sistema_iluminacio %></td>
+        <td><%= instalacio.potencia_iluminacio %></td>
+        <td><%= instalacio.descripcio_acs %></td>
+        <td><%= instalacio.descripcio_calefaccio %></td>
+        <td><%= instalacio.descripcio_refrigeracio %></td>
+        <td><%= instalacio.descripcio_iluminacio %></td>
+        <td><%= instalacio.descripcio_electrodomestics %></td>
+        <td><%= instalacio.puntuacio_acs %></td>
+        <td><%= instalacio.puntuacio_calefaccio %></td>
+        <td><%= instalacio.puntuacio_refrigeracio %></td>
+        <td><%= instalacio.puntuacio_iluminacio %></td>
+        <td><%= instalacio.puntuacio_electrodomestics %></td>
+        <td><%= link_to 'Show', instalacio %></td>
+        <td><%= link_to 'Edit', edit_instalacio_path(instalacio) %></td>
+        <td><%= link_to 'Destroy', instalacio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instalacio', new_instalacio_path %>

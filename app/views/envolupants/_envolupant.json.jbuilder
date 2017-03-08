@@ -1,0 +1,2 @@
+json.extract! envolupant, :id, :edifici_id, :millores_facana, :millores_coberta, :tipus_finestres, :estanquitat_finestres, :descripcio_facanes, :descripcio_coberta, :descripcio_terra, :descripcio_finestres, :puntuacio_facanes, :puntuacio_coberta, :puntuacio_terra, :puntuacio_finestres, :created_at, :updated_at
+json.url envolupant_url(envolupant, format: :json)

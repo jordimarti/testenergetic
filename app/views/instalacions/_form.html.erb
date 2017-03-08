@@ -1,0 +1,71 @@
+<%= simple_form_for(@instalacio) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :sistema_acs_calefaccio, :collection => [[t('.caldera_mixta_gas'), 'Caldera mixta gas'], [t('.caldera_mixta_gasoil'), 'Caldera mixta gasoil'], [t('.caldera_mixta_biomassa'), 'Caldera mixta biomassa'], [t('.termo_caldera_gas'), 'Termo i caldera gas'], [t('.termo_caldera_gasoil'), 'Termo i caldera gasoil'], [t('.termo_caldera_bomba'), 'Termo caldera gas i bomba calor'], [t('.altre_tot_electric'), 'Altre tot electric'], [t('.altre'), 'Altre']] %>
+        <%= f.input :antiguitat_acs, :collection => [[t('.mes10'), 'Mes de 10 anys'], [t('.entre5i10'), 'Entre 5 i 10 anys'], [t('.menys5'), 'Menys de 5 anys']] %>
+        <%= f.input :antiguitat_calefaccio, :collection => [[t('.mes10'), 'Mes de 10 anys'], [t('.entre5i10'), 'Entre 5 i 10 anys'], [t('.menys5'), 'Menys de 5 anys']] %>
+        <%= f.input :sistema_refrigeracio, :collection => [[t('.aire-paret'), 'Aire condicionat paret o sostre refrigeracio'], [t('.bomba'), 'Bomba calor'], [t('.noaire'), 'No aire condicionat']] %>
+        <%= f.input :antiguitat_refrigeracio, :collection => [[t('.mes10'), 'Mes de 10 anys'], [t('.entre5i10'), 'Entre 5 i 10 anys'], [t('.menys5'), 'Menys de 5 anys']] %>
+      </div>
+      <div class="medium-6 columns">
+        <%= f.input :sistema_iluminacio, :collection => [[t('.baix_consum_fluorescents'), 'Bombetes baix consum i fluorescents tub'], [t('.halogenes'), 'Bombetes halogenes'], [t('.incandescents'), 'Bombetes incandescents'], [t('.led'), 'Bombetes led'], [t('.variat'), 'Molta varietat de lampades']] %>
+        <%= f.input :potencia_iluminacio %>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_acs %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_acs, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_calefaccio %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_calefaccio, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_refrigeracio %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_refrigeracio, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_iluminacio %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_iluminacio, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_electrodomestics %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_electrodomestics, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t('.guardar'), :class => 'button button-right' %>
+  </div>
+<% end %>

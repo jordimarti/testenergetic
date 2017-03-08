@@ -1,0 +1,1 @@
+json.array! @consums, partial: 'consums/consum', as: :consum

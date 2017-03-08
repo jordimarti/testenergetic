@@ -1,0 +1,1 @@
+json.partial! "instalacions/instalacio", instalacio: @instalacio

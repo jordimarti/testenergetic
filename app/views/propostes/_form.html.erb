@@ -1,0 +1,32 @@
+<%= simple_form_for(@proposta, remote: true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :edifici_id, :as => :hidden %>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= f.input :nom %>
+        <%= f.input :descripcio %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :cost, :collection => [[t('.menys200'), 1], [t('.entre200i1000'), 2], [t('.entre1000i5000'), 3], [t('.mes5000'), 4]] %>
+      </div>
+      <div class="medium-6 columns">
+        <%= f.input :estalvi, :collection => [[t('.menys100'), 1], [t('.entre100i200'), 2], [t('.entre200i300'), 3], [t('.mes300'), 4]] %>
+      </div>
+      <div class="medium-6 columns">
+        <%= f.input :reduccio_emissions, :collection => [[t('.menys10'), 1], [t('.entre10i30'), 2], [t('.entre30i60'), 3], [t('.mes60'), 4]] %>
+      </div>
+      <div class="medium-6 columns">
+        <%= f.input :retorn_inversio, :collection => [[t('.menys5'), 1], [t('.entre5i10'), 2], [t('.entre10i15'), 3], [t('.mes15'), 4]] %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t('.guardar'), :class => 'button button-right' %>
+  </div>
+<% end %>

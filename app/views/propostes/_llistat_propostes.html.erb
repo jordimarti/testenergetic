@@ -1,0 +1,56 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= t('.nom') %></th>
+      <th><%= t('.cost') %></th>
+      <th><%= t('.estalvi') %></th>
+      <th><%= t('.roi') %></th>
+      <th><%= t('.co2') %></th>
+      <th width="30"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @propostes.each do |proposta| %>
+    <tr>
+      <td>
+      	<%= link_to edit_proposta_path(proposta), remote: true do %>
+			    <div class="proposta-editar">
+			    	<%= proposta.nom %>
+			    </div>
+			  <% end %>
+			</td>
+      <td>
+        <% nombre = proposta.cost.to_i
+        nombre.times do %>
+          <i class="fa fa-eur" aria-hidden="true"></i>
+        <% end %>
+      </td>
+      <td>
+        <% nombre = proposta.estalvi.to_i
+        nombre.times do %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        <% end %>
+      </td>
+      <td>
+        <% nombre = proposta.retorn_inversio.to_i
+        nombre.times do %>
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+        <% end %>
+      </td>
+      <td>
+        <% nombre = proposta.reduccio_emissions.to_i
+        nombre.times do %>
+          <i class="fa fa-leaf" aria-hidden="true"></i>
+        <% end %>
+      </td>
+      <td>
+      	<%= link_to proposta_path(proposta), remote: true, method: :delete,  data: { confirm: 'Segur que vols eliminar?' } do %>
+				  <div class="deficiencia-eliminar button-right">
+				  	<i class="fa fa-trash" aria-hidden="true"></i>
+				  </div>
+				<% end %>
+			</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

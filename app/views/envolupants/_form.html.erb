@@ -1,0 +1,63 @@
+<%= simple_form_for(@envolupant) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :millores_facana %>
+      </div>
+      <div class="medium-6 columns">
+        <%= f.input :millores_coberta %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :tipus_finestres, :collection => [[t('.fusta_vidre_senzill'), 'Fusta vidre senzill'], [t('.fusta_vidre_doble'), 'Fusta vidre doble'], [t('.metall_vidre_senzill'), 'Metall vidre senzill'], [t('.metall_vidre_doble'), 'Metall vidre doble'], [t('.altre'), 'Altre']] %>
+      </div>
+      <div class="medium-6 columns">
+        <%= f.input :estanquitat_finestres, :collection => [[t('.estanques'), 'Majoria molt estanques'], [t('.intermig'), 'Algunes tanquen millor que altres'], [t('.poc_estanques'), 'Poc estanques']] %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_facanes %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_facanes, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div> 
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_coberta %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_coberta, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_terra %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_terra, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div>   
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :descripcio_finestres %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :puntuacio_finestres, :collection => [[t('.p1'), 1], [t('.p2'), 2], [t('.p3'), 3], [t('.p4'), 4], [t('.p5'), 5]] %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t('.guardar'), :class => 'button button-right' %>
+  </div>
+<% end %>

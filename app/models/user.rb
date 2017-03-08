@@ -4,11 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :edificis
+
   def name
     [first_name, last_name].compact.join(' ')
   end
 
-  after_create :subscribe
+  #after_create :subscribe
   
 	def subscribe
 		gibbon = Gibbon::Request.new(api_key: ENV['mailchimp_api_key'])

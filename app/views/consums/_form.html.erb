@@ -1,0 +1,101 @@
+<%= simple_form_for(@consum) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="medium-12 columns">
+        <div class="identificacio-title">
+          <span class="title"><%= t('.dades_propietari') %></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-6 columns">
+        <%= f.input :energia_primaria %>
+        <%= f.input :emissions %>
+      </div>
+      <div class="medium-3 columns end">
+        <%= f.input :qualificacio_energia_primaria, :collection => ['A', 'B', 'C', 'D', 'E', 'F', 'G'] %>
+        <%= f.input :qualificacio_emissions, :collection => ['A', 'B', 'C', 'D', 'E', 'F', 'G'] %>
+      </div>
+    </div>
+    
+    <div class="spacer"></div>
+
+    <div class="row">
+      <div class="medium-12 columns">
+        <div class="identificacio-title">
+          <span class="title"><%= t('.dades_propietari') %></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-4 columns">
+        <%= f.input :potencia_contractada %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-4 columns">
+        <h4>Electricitat</h4>
+        <%= f.input :electricitat_consum_anual %>
+        <%= f.input :electricitat_emissions %>
+        <%= f.input :electricitat_preu %>
+        <%= f.input :electricitat_estimacio_consum_millores %>
+      </div>
+      <div class="medium-4 columns">
+        <h4>Gas</h4>
+        <%= f.input :gas_consum_anual %>
+        <%= f.input :gas_emissions %>
+        <%= f.input :gas_preu %>
+        <%= f.input :gas_estimacio_consum_millores %>
+      </div>
+      <div class="medium-4 columns">
+        <h4>Gasoil</h4>
+        <%= f.input :gasoil_consum_anual %>
+        <%= f.input :gasoil_emissions %>
+        <%= f.input :gasoil_preu %>
+        <%= f.input :gasoil_estimacio_consum_millores %>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="row">
+      <div class="medium-4 columns">
+        <h4>Calefacció</h4>
+        <%= f.input :calefaccio_font_energia %>
+        <%= f.input :calefaccio_percentatge_consum %>
+      </div>
+      <div class="medium-4 columns">
+        <h4>Calefacció 2</h4>
+        <%= f.input :calefaccio2_font_energia %>
+        <%= f.input :calefaccio2_percentatge_consum %>
+      </div>
+      <div class="medium-4 columns">
+        <h4>ACS</h4>
+        <%= f.input :acs_font_energia %>
+        <%= f.input :acs_percentatge_consum %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-4 columns">
+        <h4>Refrigeració</h4>
+        <%= f.input :refrigeracio_percentatge_consum %>
+      </div>
+      <div class="medium-4 columns">
+        <h4>Il·luminació</h4>
+        <%= f.input :iluminacio_percentatge_consum %>
+      </div>
+      <div class="medium-4 columns">
+        <h4>Electrodomèstics</h4>
+        <%= f.input :electrodomestics_percentatge_consum %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t('.guardar'), :class => 'button button-right' %>
+  </div>
+<% end %>

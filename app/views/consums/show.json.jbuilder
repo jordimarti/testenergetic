@@ -1,0 +1,1 @@
+json.partial! "consums/consum", consum: @consum
