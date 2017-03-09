@@ -12,7 +12,7 @@ class EnvolupantsController < ApplicationController
   def update
     respond_to do |format|
       if @envolupant.update(envolupant_params)
-        format.html { redirect_to edit_envolupant_path, notice: "Les dades s'han guardat correctament." }
+        format.html { redirect_to edit_envolupant_path, notice: t('.guardat_ok') }
         format.json { render :show, status: :ok, location: @envolupant }
       else
         format.html { render :edit }

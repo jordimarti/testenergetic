@@ -12,7 +12,7 @@ class ConsumsController < ApplicationController
   def update
     respond_to do |format|
       if @consum.update(consum_params)
-        format.html { redirect_to edit_consum_path, notice: "Les dades s'han guardat correctament." }
+        format.html { redirect_to edit_consum_path, notice: t('.guardat_ok') }
         format.json { render :show, status: :ok, location: @consum }
       else
         format.html { render :edit }

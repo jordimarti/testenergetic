@@ -54,7 +54,25 @@ ca:
         codi_postal_propietari: "Codi postal"
         municipi_propietari: "Població"
       envolupant:
+        millores_facana: "S'han realitzat millores a les façanes de l'edifici?"
+        millores_coberta: "S'han realitzat millores a la coberta?"
+        tipus_finestres: "Tipus majoritari de finestres"
+        estanquitat_finestres: "Estanquitat a l'aire de les finestres"
+        descripcio_facanes: "Descripció de les façanes"
         puntuacio_facanes: "Puntuació de les façanes"
+        descripcio_coberta: "Descripció de la coberta"
+        puntuacio_coberta: "Puntuació de la coberta"
+        descripcio_terra: "Descripció del terra"
+        puntuacio_terra: "Puntuació del terra"
+        descripcio_finestres: "Descripció de les finestres"
+        puntuacio_finestres: "Puntuació de les finestres"
+      proposta:
+        nom: "Nom"
+        descripcio: "Descripció"
+        cost: "Cost"
+        estalvi: "Estalvi"
+        reduccio_emissions: "Reducció emissions"
+        retorn_inversio: "Temps de retorn de la inversió"
   layouts:
     application:
       titol_pagina: "Test energètic"
@@ -72,6 +90,7 @@ ca:
       instalacions: "Instal·lacions"
       consums: "Consums"
       propostes: "Propostes de millora"
+      documents: "Documents"
   edificis:
     index:
       titol: "Projectes"
@@ -96,17 +115,56 @@ ca:
       habitatge_dins_edifici: "Habitatge dins d'un edifici"
       edifici_habitatges: "Edifici d'habitatges"
       habitatge_unifamiliar: "Habitatge unifamiliar"
+    update:
+      guardat_ok: "Les dades s'han guardat correctament"
   envolupants:
+    edit:
+      titol_envolupant: "Envolupant tèrmica"
     form:
+      fusta_vidre_senzill: "Finestres de fusta amb vidre senzill"
+      fusta_vidre_doble: "Finestres de fusta amb vidre doble i cambra d'aire"
+      metall_vidre_senzill: "Finestres metàl·liques amb vidre doble"
+      metall_vidre_doble: "Finestres metàl·liques amb vidre doble i cambra d'aire"
+      altre: "Un altre tipus de finestres"
+      estanques: "La majoria són molt estanques, tanquen molt bé"
+      intermig: "Algunes tanquen bé i altres deixen passar l'aire"
+      poc_estanques: "La majoria deixen passar aire tot i estar ben tancades"
       p1: "1 - Molt baixa"
       p2: "2 - Baixa"
       p3: "3 - Acceptable"
       p4: "4 - Alta"
       p5: "5 - Molt alta"
       guardar: "Guardar"
+    update:
+      guardat_ok: "Les dades s'han guardat correctament"
   instalacions:
+    edit:
+      titol_instalacions: "Instal·lacions"
     form:
       guardar: "Guardar"
+    update:
+      guardat_ok: "Les dades s'han guardat correctament"
   consums:
+    edit:
+      titol_consums: "Consums"
     form:
       guardar: "Guardar"
+    update:
+      guardat_ok: "Les dades s'han guardat correctament"
+  propostes:
+    index:
+      titol_propostes: "Propostes de millora"
+      titol_llistat_propostes: "Llistat de propostes"
+      afegir_proposta: "Afegir proposta"
+      proposta: "Nova proposta"
+    llistat_propostes:
+      nom: "Nom"
+      cost: "Cost"
+      estalvi: "Estalvi"
+      roi: "ROI"
+      co2: "CO2"
+    form:
+      guardar: "Guardar"
+  documents:
+    index:
+      titol_document: "Documents"
