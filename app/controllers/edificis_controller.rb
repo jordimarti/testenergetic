@@ -30,7 +30,7 @@ class EdificisController < ApplicationController
     respond_to do |format|
       if @edifici.save
         create_complements(@edifici.id)
-        format.html { redirect_to edificis_path, notice: 'Edifici was successfully created.' }
+        format.html { redirect_to edificis_path, notice: t('.edifici_creat') }
         format.json { render :show, status: :created, location: @edifici }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class EdificisController < ApplicationController
   def update
     respond_to do |format|
       if @edifici.update(edifici_params)
-        format.html { redirect_to edificis_path, notice: 'Edifici was successfully updated.' }
+        format.html { redirect_to edificis_path, notice: t('.edifici_actualitzat') }
         format.json { render :show, status: :ok, location: @edifici }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class EdificisController < ApplicationController
   def destroy
     @edifici.destroy
     respond_to do |format|
-      format.html { redirect_to edificis_url, notice: 'Edifici was successfully destroyed.' }
+      format.html { redirect_to edificis_url, notice: t('.edifici_eliminat') }
       format.json { head :no_content }
     end
   end
