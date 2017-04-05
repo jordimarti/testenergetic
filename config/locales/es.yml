@@ -74,3 +74,9 @@ es:
   consums:
     form:
       guardar: "Guardar"
+  documents:
+    index:
+      titol_document: "Documentos"
+      exportar_operacions: "Exportar propuestas"
+      text_generar_xml: "Exportad las propuestas de mejora en formato XML."
+      genera_test_energetic: "Genera test energético"

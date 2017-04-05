@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :instalacions
   resources :identificacions
   resources :envolupants
-  resources :edificis
+  resources :edificis do
+    resource :download, only: [:show]
+  end
   devise_for :users
   get 'home/index'
   get 'home/contacta'

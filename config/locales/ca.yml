@@ -176,3 +176,4 @@ ca:
       titol_document: "Documents"
       exportar_operacions: "Exportar propostes"
       text_generar_xml: "Exporteu les propostes de millora en format XML."
+      genera_test_energetic: "Genera test energètic"

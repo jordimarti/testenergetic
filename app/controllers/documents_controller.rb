@@ -3,6 +3,7 @@ class DocumentsController < ApplicationController
   before_action :set_edifici, only: [:index]
   
   def index
+    check_user_edifici(params[:edifici_id])
   	@subnavigation = true
     @submenu_actiu = 'documents'
   end
