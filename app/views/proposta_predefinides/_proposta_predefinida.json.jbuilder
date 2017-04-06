@@ -1,0 +1,2 @@
+json.extract! proposta_predefinida, :id, :edifici_id, :nom_ca, :nom_es, :descripcio_ca, :descripcio_es, :cost, :estalvi, :reduccio_emissions, :retorn_inversio, :created_at, :updated_at
+json.url proposta_predefinida_url(proposta_predefinida, format: :json)

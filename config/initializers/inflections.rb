@@ -19,4 +19,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'identificacio', 'identificacions'
   inflect.irregular 'instalacio', 'instalacions'
   inflect.irregular 'proposta', 'propostes'
+  inflect.irregular 'predefinida', 'predefinides'
 end

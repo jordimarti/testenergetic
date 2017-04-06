@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403143103) do
+ActiveRecord::Schema.define(version: 20170405201225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,21 @@ ActiveRecord::Schema.define(version: 20170403143103) do
     t.string   "puntuacio_electrodomestics"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "proposta_predefinides", force: :cascade do |t|
+    t.integer  "edifici_id"
+    t.string   "nom_ca"
+    t.string   "nom_es"
+    t.text     "descripcio_ca"
+    t.text     "descripcio_es"
+    t.string   "cost"
+    t.string   "estalvi"
+    t.string   "reduccio_emissions"
+    t.string   "retorn_inversio"
+    t.string   "categoria"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "propostes", force: :cascade do |t|

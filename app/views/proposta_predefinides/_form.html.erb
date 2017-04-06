@@ -1,0 +1,20 @@
+<%= simple_form_for(@proposta_predefinida) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :edifici_id %>
+    <%= f.input :nom_ca %>
+    <%= f.input :nom_es %>
+    <%= f.input :descripcio_ca %>
+    <%= f.input :descripcio_es %>
+    <%= f.input :cost %>
+    <%= f.input :estalvi %>
+    <%= f.input :reduccio_emissions %>
+    <%= f.input :retorn_inversio %>
+    <%= f.input :categoria %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

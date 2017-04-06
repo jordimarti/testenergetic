@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Edifici:</strong>
+  <%= @proposta_predefinida.edifici_id %>
+</p>
+
+<p>
+  <strong>Nom ca:</strong>
+  <%= @proposta_predefinida.nom_ca %>
+</p>
+
+<p>
+  <strong>Nom es:</strong>
+  <%= @proposta_predefinida.nom_es %>
+</p>
+
+<p>
+  <strong>Descripcio ca:</strong>
+  <%= @proposta_predefinida.descripcio_ca %>
+</p>
+
+<p>
+  <strong>Descripcio es:</strong>
+  <%= @proposta_predefinida.descripcio_es %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @proposta_predefinida.cost %>
+</p>
+
+<p>
+  <strong>Estalvi:</strong>
+  <%= @proposta_predefinida.estalvi %>
+</p>
+
+<p>
+  <strong>Reduccio emissions:</strong>
+  <%= @proposta_predefinida.reduccio_emissions %>
+</p>
+
+<p>
+  <strong>Retorn inversio:</strong>
+  <%= @proposta_predefinida.retorn_inversio %>
+</p>
+
+<%= link_to 'Edit', edit_proposta_predefinida_path(@proposta_predefinida) %> |
+<%= link_to 'Back', proposta_predefinides_path %>

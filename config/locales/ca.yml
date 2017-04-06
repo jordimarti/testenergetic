@@ -163,6 +163,7 @@ ca:
       titol_llistat_propostes: "Llistat de propostes"
       afegir_proposta: "Afegir proposta"
       proposta: "Nova proposta"
+      afegir_proposta_predefinida: "Afegir proposta predefinida"
     llistat_propostes:
       nom: "Nom"
       cost: "Cost"
@@ -171,6 +172,32 @@ ca:
       co2: "CO2"
     form:
       guardar: "Guardar"
+      menys200: "Menys de 200 €"
+      entre200i1000: "Entre 200 i 1000 €"
+      entre1000i5000: "Entre 1000 i 5000 €"
+      mes5000: "Més de 5000 €"
+      menys100: "Menys de 100 €"
+      entre100i200: "Entre 100 i 200 €"
+      entre200i300: "Entre 200 i 300 €"
+      mes300: "Més de 300 €"
+      menys10: "Menys del 10%"
+      entre10i30: "Entre el 10% i el 30%"
+      entre30i60: "Entre el 30% i el 60%"
+      mes60: "Més del 60%"
+      menys5: "Menys de 5 anys"
+      entre5i10: "Entre 5 i 10 anys"
+      entre10i15: "Entre 10 i 15 anys"
+      mes15: "Més de 15 anys"
+  proposta_predefinides:
+    llistat_propostes_predefinides:
+      millora_envolupant: "Increment d'aïllament de l'envolupant"
+      millores_forats: "Millores als forats"
+      millores_calefaccio: "Millores en el sistema de calefacció"
+      millores_refrigeracio: "Millores en el sistema de refrigeració"
+      millores_calefaccio_refrigeracio: "Millores en el sistema de calefacció i refrigeració"
+      millores_acs: "Millores en el sistema d'ACS"
+      millores_ventilacio: "Millores en el sistema de ventilació"
+      millores_iluminacio: "Millores en el sistema d'il·luminació"
   documents:
     index:
       titol_document: "Documents"

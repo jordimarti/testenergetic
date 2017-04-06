@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Proposta Predefinides</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Edifici</th>
+      <th>Nom ca</th>
+      <th>Nom es</th>
+      <th>Descripcio ca</th>
+      <th>Descripcio es</th>
+      <th>Cost</th>
+      <th>Estalvi</th>
+      <th>Reduccio emissions</th>
+      <th>Retorn inversio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proposta_predefinides.each do |proposta_predefinida| %>
+      <tr>
+        <td><%= proposta_predefinida.edifici_id %></td>
+        <td><%= proposta_predefinida.nom_ca %></td>
+        <td><%= proposta_predefinida.nom_es %></td>
+        <td><%= proposta_predefinida.descripcio_ca %></td>
+        <td><%= proposta_predefinida.descripcio_es %></td>
+        <td><%= proposta_predefinida.cost %></td>
+        <td><%= proposta_predefinida.estalvi %></td>
+        <td><%= proposta_predefinida.reduccio_emissions %></td>
+        <td><%= proposta_predefinida.retorn_inversio %></td>
+        <td><%= link_to 'Show', proposta_predefinida %></td>
+        <td><%= link_to 'Edit', edit_proposta_predefinida_path(proposta_predefinida) %></td>
+        <td><%= link_to 'Destroy', proposta_predefinida, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proposta Predefinida', new_proposta_predefinida_path %>
