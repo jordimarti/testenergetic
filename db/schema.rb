@@ -50,8 +50,9 @@ ActiveRecord::Schema.define(version: 20170405201225) do
   create_table "edificis", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "nom_edifici"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "ref_cadastral"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "envolupants", force: :cascade do |t|
