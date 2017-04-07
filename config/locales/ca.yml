@@ -31,6 +31,9 @@ ca:
         password_confirmation: 'Confirmació de contrasenya'
         current_password: 'Contrasenya actual'
         remember_me: "Recorda'm"
+      edifici:
+        nom_edifici: "Nom del projecte"
+        ref_cadastral: "Referència cadastral"
       identificacio:
         tipus_via: "Tipus de via"
         nom_via: "Nom de la via"
@@ -94,7 +97,7 @@ ca:
   edificis:
     index:
       titol: "Projectes"
-      nou_edifici: "Crear un nou edifici"
+      nou_edifici: "Crear un nou projecte"
       no_projectes: "Encara no has creat cap projecte."
     new:
       titol: "Crear un nou projecte"
@@ -102,11 +105,11 @@ ca:
     form:
       guardar: "Guardar"
     create:
-      edifici_creat: "L'edifici s'ha creat correctament"
+      edifici_creat: "El projecte s'ha creat correctament"
     update:
       edifici_actualitzat: "Les dades s'han actualitzat correctament"
     delete:
-      edifici_eliminat: "L'edifici s'ha eliminat correctament"
+      edifici_eliminat: "El projecte s'ha eliminat correctament"
   identificacions:
     edit:
       titol_identificacio: "Identificació"
