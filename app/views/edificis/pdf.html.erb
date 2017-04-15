@@ -1,26 +1,310 @@
-<div class="row">
-	<div class="medium-12 columns">
-		<h1 class="titol-document">TEST ENERGÈTIC</h1>
-		
-	</div>
-</div>
 
-<div class="row">
-	<div class="medium-12 columns">
-		<ul><li>EDIFICI</li></ul>
-	</div>
-</div>
+  <div class="print-titol">
+    <h2 class="print-h2"><%= edifici.nom_edifici %></h2>
+  </div>
 
-<div class="row">
-	<div class="medium-12 columns">
-		
-		<% if edifici.identificacio.bloc.blank?
+ 	<div class="print-info-basica">
+    <div class="print-propietari">
+      <h5 class="print">Sol·licitant:</h5>
+      <span><%= edifici.identificacio.nom_propietari + ' ' + edifici.identificacio.cognoms_propietari %></span><br/>
+      <span><%= edifici.identificacio.tipus_document_identitat_propietari + ': ' + edifici.identificacio.numero_document_identitat_propietari %></span>
+    </div>
+    <div class="print-adreca">
+    <% if edifici.identificacio.bloc.blank?
 		    adreca = edifici.identificacio.tipus_via.to_s + ' ' + edifici.identificacio.nom_via.to_s + ' ' + edifici.identificacio.numero_via.to_s
 		  else
 		    adreca = edifici.identificacio.tipus_via.to_s + ' ' + edifici.identificacio.nom_via.to_s + ' ' + edifici.identificacio.numero_via.to_s + ', bloc ' + edifici.identificacio.bloc.to_s
 		  end
 		%>
+      <h5 class="print">Adreça:</h5>
+      <span><%= adreca %></span><br/>
+      <span>Codi postal: <%= edifici.identificacio.codi_postal %></span><br/>
+      <span>Municipi: <%= edifici.identificacio.poblacio %></span>
+    </div>
+    <div class="print-caracteristiques">
+      <h5 class="print">Característiques:</h5>
+      <span><%= edifici.identificacio.tipus_projecte %></span><br/>
+      <span>Superfície: <%= edifici.identificacio.superficie_util%> m<sup>2</sup></span><br/>
+      <span>Any de construcció: <%= edifici.identificacio.any_construccio %> </span>
+    </div>
+  </div>
 
-		Situació: <%= adreca %>
-	</div>
-</div>
+  <div class="print-apartat">
+    <h4 class="print">Qualificació energètica de l'habitatge</h4>
+    <div class="print-etiqueta">
+      <h5 class="print">Emissions de CO<sub>2</sub></h5>
+      <p class="valors-etiqueta"><%= edifici.consum.emissions %> kgCO<sub>2</sub>/m<sup>2</sup>any</p>
+      <span class="text-tips">Més eficient</span><br/>
+      <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_' + edifici.consum.qualificacio_emissions.downcase + '.jpg', width: "200", height: "139") %><br/>
+      <span class="text-tips">Menys eficient</span>
+    </div>
+
+    <div class="print-etiqueta">
+      <h5 class="print">Demanda d'energia primària</h5>
+      <p class="valors-etiqueta"><%= edifici.consum.energia_primaria %> kWh/m<sup>2</sup>any</p>
+      <span class="text-tips">Més eficient</span><br/>
+      <%= image_tag("https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_" + edifici.consum.qualificacio_energia_primaria.downcase + ".jpg", width: "200", height: "139") %><br/>
+      <span class="text-tips">Menys eficient</span>
+    </div>
+  </div>
+
+  <%
+  @total_energy_consumption = edifici.consum.electricitat_consum_anual + edifici.consum.gas_consum_anual + edifici.consum.gasoil_consum_anual
+  @total_energy_consumption_improvements = edifici.consum.electricitat_estimacio_consum_millores + edifici.consum.gas_estimacio_consum_millores + edifici.consum.gasoil_estimacio_consum_millores
+
+  @percentage_savings = -(@total_energy_consumption_improvements * 100 / @total_energy_consumption)+100
+  @money_savings_electricity = (edifici.consum.electricitat_consum_anual - edifici.consum.electricitat_estimacio_consum_millores) * edifici.consum.electricitat_preu
+  @money_savings_gas = (edifici.consum.gas_consum_anual - edifici.consum.gas_estimacio_consum_millores) * edifici.consum.gas_preu
+  @money_savings_gasoil = (edifici.consum.gasoil_consum_anual - edifici.consum.gasoil_estimacio_consum_millores) * edifici.consum.gasoil_preu
+  @money_savings = @money_savings_electricity + @money_savings_gas + @money_savings_gasoil
+
+  @total_heating_percentage = edifici.consum.calefaccio_percentatge_consum + edifici.consum.calefaccio2_percentatge_consum
+  @consum_calefaccio = @total_energy_consumption * @total_heating_percentage / 100
+  @consum_refrigeracio = @total_energy_consumption * edifici.consum.refrigeracio_percentatge_consum / 100
+  @consum_acs = @total_energy_consumption * edifici.consum.acs_percentatge_consum / 100
+  @consum_iluminacio = @total_energy_consumption * edifici.consum.iluminacio_percentatge_consum / 100
+  @consum_electrodomestics = @total_energy_consumption * edifici.consum.electrodomestics_percentatge_consum / 100
+
+  case edifici.consum.calefaccio_font_energia
+	  when 'Electricitat'
+	  	cost_calefaccio = edifici.consum.electricitat_preu
+	  when 'Gas'
+	  	cost_calefaccio = edifici.consum.gas_preu
+	  when 'Gasoil'
+	  	cost_calefaccio = edifici.consum.gasoil_preu
+  end
+
+  case edifici.consum.acs_font_energia
+	  when 'Electricitat'
+	  	cost_acs = edifici.consum.electricitat_preu
+	  when 'Gas'
+	  	cost_acs = edifici.consum.gas_preu
+	  when 'Gasoil'
+	  	cost_acs = edifici.consum.gasoil_preu
+  end
+
+  @cost_calefaccio = @consum_calefaccio * cost_calefaccio
+  @cost_acs = @consum_acs * cost_acs
+  @cost_refrigeracio = @consum_refrigeracio * edifici.consum.electricitat_preu
+  @cost_iluminacio = @consum_iluminacio * edifici.consum.electricitat_preu
+  @cost_electrodomestics = @consum_electrodomestics * edifici.consum.electricitat_preu
+  %>
+
+  <div class="container-estalvi-millores">
+    <div class="print-apartat">
+      <h4 class="print">Potencial d'estalvi aplicant millores</h4>
+      <div class="percentatge-estalvi">
+        <div class="numero-percentatge-estalvi">
+          <%= @percentage_savings.to_i %>% <span class="numero-percentatge-estalvi-petit">del consum <sup>*</sup></span>
+        </div>
+        <div class="text-percentatge-estalvi">
+          <p>Aplicant les propostes de millora podríeu estalviar un <%= @percentage_savings.to_i %>% de l'energia que consumiu cada any.</p>
+        </div>
+      </div>
+      <div class="diners-estalvi">
+        <div class="numero-diners-estalvi">
+          <%= @money_savings.to_i %>€ <span class="numero-diners-estalvi-petit">cada any <sup>*</sup></span>
+        </div>
+        <div class="text-diners-estalvi">
+          <p>Si porteu a terme les propostes de millora podreu estalviar <%= @money_savings.to_i %>€ cada any.</p>
+        </div>
+      </div>
+      <div class="print-comparacio-energia">
+        <div class="tip-consum consum-actual" style="position: absolute; top: 0px; right: 136px; text-align: right; border-right-style: solid; border-right-width: 2px; border-right-color: #333333; padding-right: 5px; height: 50px; width: 200px;">
+          <span>Consum actual</span><br/>
+          <span><%= @total_energy_consumption %> kWh/any</span>
+        </div>
+        <% #Posem el consum real a 480px de l'esquerra. La posició del consum de millores es busca a partir d'aquesta dada %>
+        <% posicio_consum_millores = @total_energy_consumption_improvements*480/@total_energy_consumption %>
+        <div class="tip-consum consum-millores" style="position: absolute; top: 70px; left: <%= posicio_consum_millores %>px; text-align: left; border-left-style: solid; border-left-width: 2px; border-left-color: #333333; padding-left: 5px; padding-top: 20px; height: 30px; width: 300px;">
+          <span>Consum aplicant propostes de millora</span><br/>
+          <span><%= @total_energy_consumption_improvements %> kWh/any</span>
+        </div>
+        <div class="print-barra-energia">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/barra_energia.png', :alt => 'barra energia', :class => 'img_barra_energia') %>
+        </div>
+        <p class="print-llegenda"><sup>*</sup>El consum d'energia d'un edifici no es pot predir amb exactitud perquè depèn de molts factors variables com l'ús de l'edifici o el clima. Per aquesta raó les estimacions d'estalvi energètic d'aquest document són orientatives.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-info-tecnic">
+    <div class="print-info-tecnic">
+      <h5 class="print">Nom del tècnic:</h5>
+      <p></p>
+      <h5 class="print">Titulació:</h5>
+      <p></p>
+    </div>
+    <div class="print-info-tecnic2">
+      <h5 class="print">Correu electrònic:</h5>
+      <p></p>
+      <h5 class="print">Telèfon:</h5>
+      <p></p>
+    </div>
+    <div class="print-data-signatura">
+      <h5 class="print">Data i signatura:</h5>
+
+    </div>
+  </div>
+
+  <div class="pagebreak"></div>
+  
+  <div class="print-apartat"> 
+    <h4 class="print">Eficiència energètica dels elements constructius</h4>
+    
+    <div class="table">
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th class="print-table-header">Element</th>
+            <th class="print-table-header">Descripció</th>
+            <th class="print-table-header">Eficiència energètica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Façanes</td>
+            <td><%= edifici.envolupant.descripcio_facanes %></td>
+            <td>
+              <% edifici.envolupant.puntuacio_facanes.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>Cobertes</td>
+            <td><%= edifici.envolupant.descripcio_coberta %></td>
+            <td>
+              <% edifici.envolupant.puntuacio_coberta.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>Terres</td>
+            <td><%= edifici.envolupant.descripcio_terra %></td>
+            <td>
+              <% edifici.envolupant.puntuacio_terra.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>Finestres</td>
+            <td><%= edifici.envolupant.descripcio_finestres %></td>
+            <td>
+              <% edifici.envolupant.puntuacio_finestres.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>Aigua calenta</td>
+            <td><%= edifici.instalacio.descripcio_acs %></td>
+            <td>
+              <% edifici.instalacio.puntuacio_acs.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>Calefacció</td>
+            <td><%= edifici.instalacio.descripcio_calefaccio %></td>
+            <td>
+              <% edifici.instalacio.puntuacio_calefaccio.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>Refrigeració</td>
+            <td><%= edifici.instalacio.descripcio_refrigeracio %></td>
+            <td>
+              <% edifici.instalacio.puntuacio_refrigeracio.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>Il·luminació</td>
+            <td><%= edifici.instalacio.descripcio_iluminacio %></td>
+            <td>
+              <% edifici.instalacio.puntuacio_iluminacio.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>Electrodomèstics</td>
+            <td><%= edifici.instalacio.descripcio_electrodomestics %></td>
+            <td>
+              <% edifici.instalacio.puntuacio_electrodomestics.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <p class="print-llegenda">
+        La valoració que es fa de l'eficiència energètica de cada element és la global per aquell tipus d'element. Per exemple en el cas que hi hagi diferents tipus de façanes la valoració és del conjunt, no d'un tipus de façana en concret.
+      </p>
+      <p class="print-llegenda">
+        <i class="fa fa-star" aria-hidden="true"></i> Dolent | <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> Acceptable | <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> Molt bo
+      </p>
+    </div>
+  </div>
+
+  <div class="print-apartat">
+    <h4 class="print">Distribució dels consums</h4>
+    <div class="print-distribucio-consums">
+      <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Item', 'Percentatge'],
+            ['Calefacció', <%= @consum_calefaccio %>],
+            ['Refrigeració', <%= @consum_refrigeracio %>],
+            ['Aigua calenta sanitària', <%= @consum_acs %>],
+            ['Il·luminació', <%= @consum_iluminacio %>],
+            ['Electrodomèstics', <%= @consum_electrodomestics %>]
+          ]);
+
+          var options = {
+            legend: 'none',
+            colors:['#de3700','#0098c8', '#ff9a01', '#009802', '#2e63cf'],
+            chartArea:{left:0,top:0,width:"100%",height:"100%"}
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(data, options);
+        }
+      </script>
+      <div id="piechart" style="width: 250px; height: 167px;"></div>
+    </div>
+
+    <div class="print-distribucio-llegenda">
+      <div class="print-item-llegenda">
+        <div class="llegenda-calefaccio llegenda-container">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/icon_calefaccio.png', :class => 'img_icon') %>
+          <span>Calefacció: <%= @consum_calefaccio.to_i %> kWh/any (<%= (@cost_calefaccio).to_i %>€)</span>
+        </div>
+        <div class="llegenda-refrigeracio llegenda-container">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/icon_refrigeracio.png', :class => 'img_icon') %>
+          <span>Refrigeració: <%= @consum_refrigeracio.to_i %> kWh/any (<%= (@cost_refrigeracio).to_i %>€)</span>
+        </div>
+        <div class="llegenda-acs llegenda-container">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/icon_acs.png', :class => 'img_icon') %>
+          <span>Aigua calenta sanitària: <%= @consum_acs.to_i %> kWh/any (<%= (@cost_acs).to_i %>€)</span>
+        </div>
+        <div class="llegenda-iluminacio llegenda-container">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/icon_iluminacio.png', :class => 'img_icon') %>
+          <span>Il·luminació: <%= @consum_iluminacio.to_i %> kWh/any (<%= (@cost_iluminacio).to_i %>€)</span>
+        </div>
+        <div class="llegenda-electrodomestics llegenda-container">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/icon_electrodomestics.png', :class => 'img_icon') %>
+          <span>Electrodomèstics: <%= @consum_electrodomestics.to_i %> kWh/any (<%= (@cost_electrodomestics).to_i %>€)</span>
+        </div>
+      </div>
+  </div>

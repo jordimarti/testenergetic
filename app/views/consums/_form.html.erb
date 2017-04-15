@@ -65,17 +65,17 @@
     <div class="row">
       <div class="medium-4 columns">
         <h4>Calefacció</h4>
-        <%= f.input :calefaccio_font_energia %>
+        <%= f.input :calefaccio_font_energia, :collection => [[t('.electricitat'), 'Electricitat'], [t('.gas'), 'Gas'], [t('.gasoil'), 'Gasoil']] %>
         <%= f.input :calefaccio_percentatge_consum %>
       </div>
       <div class="medium-4 columns">
         <h4>Calefacció 2</h4>
-        <%= f.input :calefaccio2_font_energia %>
+        <%= f.input :calefaccio2_font_energia, :collection => [[t('.electricitat'), 'Electricitat'], [t('.gas'), 'Gas'], [t('.gasoil'), 'Gasoil']] %>
         <%= f.input :calefaccio2_percentatge_consum %>
       </div>
       <div class="medium-4 columns">
         <h4>ACS</h4>
-        <%= f.input :acs_font_energia %>
+        <%= f.input :acs_font_energia, :collection => [[t('.electricitat'), 'Electricitat'], [t('.gas'), 'Gas'], [t('.gasoil'), 'Gasoil']] %>
         <%= f.input :acs_percentatge_consum %>
       </div>
     </div>
