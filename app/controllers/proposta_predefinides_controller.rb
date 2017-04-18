@@ -66,7 +66,7 @@ class PropostaPredefinidesController < ApplicationController
     #@propostes = Proposta.where(edifici_id: params[:edifici_id])
   end
 
-  def add
+  def afegeix
     proposta_predefinida = PropostaPredefinida.find(params[:proposta_predefinida_id])
     proposta = Proposta.new
     proposta.edifici_id = params[:edifici_id]

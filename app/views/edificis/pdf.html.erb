@@ -1,4 +1,13 @@
 
+  <div class="print-logo">
+    <h1 class="print-h1">TEST ENERGÈTIC</h1>
+  </div>
+  <div class="print-top-info">
+    <span>testenergetic.apabcn.cat</span><br/>
+    <span>info@apabcn.cat</span><br/>
+    <span>Tel. 932402060</span>
+  </div>
+
   <div class="print-titol">
     <h2 class="print-h2"><%= edifici.nom_edifici %></h2>
   </div>
@@ -308,3 +317,154 @@
         </div>
       </div>
   </div>
+
+  <div class="pagebreak">
+    <h3 class="print">Propostes de millora</h3>
+  </div>
+  <div>
+    <h4 class="print">Resum de les propostes</h4>
+    <div style="position: relative;">
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th class="print-table-header">Nom</th>
+            <th class="print-table-header">Cost</th>
+            <th class="print-table-header">Estalvi</th>
+            <th class="print-table-header">Retorn inversió</th>
+            <th class="print-table-header">CO<sub>2</sub></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% edifici.propostes.each do |proposta| %>
+          
+          <tr>
+            <td width="300px"><%= proposta.nom %></td>
+            <td>
+              <% proposta.cost.to_i.times do %>
+                <i class="fa fa-eur" aria-hidden="true"></i>
+              <% end %>
+            </td>
+            <td>
+              <% proposta.estalvi.to_i.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+            </td>
+            <td>
+              <% proposta.retorn_inversio.to_i.times do %>
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <% end %>
+            </td>
+            <td>
+              <% proposta.reduccio_emissions.to_i.times do %>
+                <i class="fa fa-leaf" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+
+        <% end %>
+        </tbody>
+      </table>
+      <p class="print-llegenda">
+        Cost de les propostes:<br/>
+        <i class="fa fa-eur" aria-hidden="true"></i> Menys de 200 € | <i class="fa fa-eur" aria-hidden="true"></i><i class="fa fa-eur" aria-hidden="true"></i> Entre 200 € i 1.000 € | <i class="fa fa-eur" aria-hidden="true"></i><i class="fa fa-eur" aria-hidden="true"></i><i class="fa fa-eur" aria-hidden="true"></i> Entre 1.000 i 5.000 € | <i class="fa fa-eur" aria-hidden="true"></i><i class="fa fa-eur" aria-hidden="true"></i><i class="fa fa-eur" aria-hidden="true"></i><i class="fa fa-eur" aria-hidden="true"></i> Més de 5.000 €
+      </p>
+      <p class="print-llegenda">
+        Estalvi econòmic anual de les propostes:<br />
+        <i class="fa fa-star" aria-hidden="true"></i> Menys de 100 € | <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> Entre 100 € i 200 € | <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> Entre 200 i 300 € | <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> Més de 300 €
+      </p>
+      <p class="print-llegenda">
+        Temps d'amortització de les propostes:<br />
+        <i class="fa fa-clock-o" aria-hidden="true"></i> Menys de 5 anys | <i class="fa fa-clock-o" aria-hidden="true"></i><i class="fa fa-clock-o" aria-hidden="true"></i> De 5 a 10 anys | <i class="fa fa-clock-o" aria-hidden="true"></i><i class="fa fa-clock-o" aria-hidden="true"></i><i class="fa fa-clock-o" aria-hidden="true"></i> De 10 a 15 anys | <i class="fa fa-clock-o" aria-hidden="true"></i><i class="fa fa-clock-o" aria-hidden="true"></i><i class="fa fa-clock-o" aria-hidden="true"></i><i class="fa fa-clock-o" aria-hidden="true"></i> Més de 15 anys
+      </p>
+      <p class="print-llegenda">
+        Reducció de les emissions de CO<sub>2</sub><br />
+        <i class="fa fa-leaf" aria-hidden="true"></i> Menys del 10% | <i class="fa fa-leaf" aria-hidden="true"></i><i class="fa fa-leaf" aria-hidden="true"></i> Entre el 10% i el 30% | <i class="fa fa-leaf" aria-hidden="true"></i><i class="fa fa-leaf" aria-hidden="true"></i><i class="fa fa-leaf" aria-hidden="true"></i> Entre el 30% i el 60% | <i class="fa fa-leaf" aria-hidden="true"></i><i class="fa fa-leaf" aria-hidden="true"></i><i class="fa fa-leaf" aria-hidden="true"></i><i class="fa fa-leaf" aria-hidden="true"></i> Més del 60%
+      </p>
+    </div>
+  </div>
+
+  <% edifici.propostes.each do |proposta| %>
+    <div class="print-apartat contenidor-millores">
+      <h4 class="print"><%= proposta.nom %></h4>
+      <div class="print-dades-proposta">
+        
+        <div class="container-element-lateral">
+          <h5 class="print">Cost d'execució</h5>
+          <% proposta.cost.to_i.times do %>
+            <i class="fa fa-eur" aria-hidden="true"></i>
+          <% end %>
+          <br/>
+          <% case proposta.cost.to_i
+            when 1
+              cost = "Menys de 200 €"
+            when 2
+              cost = "Entre 200 € i 1.000 €"
+            when 3
+              cost = "Entre 1.000 i 5.000 €"
+            when 4
+              cost = "Més de 5.000 €"
+          end %>
+          <p class="dades-laterals"><%= cost %></p>
+        </div>
+        
+        <div class="container-element-lateral">
+          <h5 class="print">Estalvi econòmic anual</h5>
+          <% proposta.estalvi.to_i.times do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          <br/>
+          <% case proposta.estalvi.to_i
+            when 1
+              estalvi = "Menys de 100 €"
+            when 2
+              estalvi = "Entre 100 € i 200 €"
+            when 3
+              estalvi = "Entre 200 i 300 €"
+            when 4
+              estalvi = "Més de 300 €"
+          end %>
+          <p class="dades-laterals"><%= estalvi %></p>
+        </div>
+
+        <div class="container-element-lateral">
+          <h5 class="print">Amortització</h5>
+          <% proposta.retorn_inversio.to_i.times do %>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <% end %>
+          <br/>
+          <% case proposta.retorn_inversio.to_i
+            when 1
+              roi = "Menys de 5 anys"
+            when 2
+              roi = "De 5 a 10 anys"
+            when 3
+              roi = "De 10 a 15 anys"
+            when 4
+              roi = "Més de 15 anys"
+          end %>
+          <p class="dades-laterals"><%= roi %></p>
+        </div>
+
+        <div class="container-element-lateral">
+          <h5 class="print">Reducció emissions de CO<sub>2</sub></h5>
+          <% proposta.reduccio_emissions.to_i.times do %>
+            <i class="fa fa-leaf" aria-hidden="true"></i>
+          <% end %>
+          <br/>
+          <% case proposta.reduccio_emissions.to_i
+            when 1
+              roi = "Menys del 10%"
+            when 2
+              roi = "Del 10% al 30%"
+            when 3
+              roi = "Del 30% al 60%"
+            when 4
+              roi = "Més del 60%"
+          end %>
+          <p class="dades-laterals"><%= roi %></p>
+        </div>
+      </div>
+      <p class="print-explicacio-proposta"><%= proposta.descripcio %></p>
+
+    </div>
+  <% end %>

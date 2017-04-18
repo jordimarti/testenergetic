@@ -3,7 +3,7 @@
 	<% propostes = PropostaPredefinida.where(categoria: 'aillament_envolupant') %>
 	<% propostes.each do |proposta| %>
 		<li>
-			<%= link_to add_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
+			<%= link_to afegeix_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
 				<%= proposta.nom_ca %>
 			<% end %>
 		</li>
@@ -14,7 +14,7 @@
 	<% propostes = PropostaPredefinida.where(categoria: 'millores_forats') %>
 	<% propostes.each do |proposta| %>
 		<li>
-			<%= link_to add_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
+			<%= link_to afegeix_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
 				<%= proposta.nom_ca %>
 			<% end %>
 		</li>
@@ -25,7 +25,7 @@
 	<% propostes = PropostaPredefinida.where(categoria: 'millores_calefaccio') %>
 	<% propostes.each do |proposta| %>
 		<li>
-			<%= link_to add_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
+			<%= link_to afegeix_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
 				<%= proposta.nom_ca %>
 			<% end %>
 		</li>
@@ -36,7 +36,7 @@
 	<% propostes = PropostaPredefinida.where(categoria: 'millores_refrigeracio') %>
 	<% propostes.each do |proposta| %>
 		<li>
-			<%= link_to add_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
+			<%= link_to afegeix_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
 				<%= proposta.nom_ca %>
 			<% end %>
 		</li>
@@ -47,7 +47,7 @@
 	<% propostes = PropostaPredefinida.where(categoria: 'millores_calefaccio_refrigeracio') %>
 	<% propostes.each do |proposta| %>
 		<li>
-			<%= link_to add_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
+			<%= link_to afegeix_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
 				<%= proposta.nom_ca %>
 			<% end %>
 		</li>
@@ -58,7 +58,7 @@
 	<% propostes = PropostaPredefinida.where(categoria: 'millores_acs') %>
 	<% propostes.each do |proposta| %>
 		<li>
-			<%= link_to add_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
+			<%= link_to afegeix_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
 				<%= proposta.nom_ca %>
 			<% end %>
 		</li>
@@ -69,7 +69,7 @@
 	<% propostes = PropostaPredefinida.where(categoria: 'millores_ventilacio') %>
 	<% propostes.each do |proposta| %>
 		<li>
-			<%= link_to add_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
+			<%= link_to afegeix_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
 				<%= proposta.nom_ca %>
 			<% end %>
 		</li>
@@ -80,7 +80,7 @@
 	<% propostes = PropostaPredefinida.where(categoria: 'millores_iluminacio') %>
 	<% propostes.each do |proposta| %>
 		<li>
-			<%= link_to add_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
+			<%= link_to afegeix_proposta_predefinida_path(edifici_id: params[:edifici_id], proposta_predefinida_id: proposta.id), remote: true do %>
 				<%= proposta.nom_ca %>
 			<% end %>
 		</li>
