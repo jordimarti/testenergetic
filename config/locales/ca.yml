@@ -94,6 +94,10 @@ ca:
       consums: "Consums"
       propostes: "Propostes de millora"
       documents: "Documents"
+  home:
+    index:
+      titol_test_energetic: "Test energètic"
+      subtitol_test_energetic: "Eina de suport per a l'elaboració de propostes d'estalvi energètic en habitatges existents."
   edificis:
     index:
       titol: "Projectes"

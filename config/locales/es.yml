@@ -44,6 +44,10 @@ es:
       sign_out: "Cerrar sesión"
       tutorials: "Tutoriales"
       projectes: "Proyectos"
+  home:
+    index:
+      titol_test_energetic: "Test energético"
+      subtitol_test_energetic: "Herramienta para la elaboración de propuestas de ahorro energético en viviendas existentes."
   edificis:
     index:
       titol: "Proyectos"
